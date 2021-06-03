@@ -4,7 +4,7 @@
 
 import UIKit
 
-class ShadowViewController: UIViewController {
+class ShadowViewController: BaseViewController {
     private var shadowView: ShadowView = {
         let view = ShadowView()
         view.translatesAutoresizingMaskIntoConstraints = false
