@@ -5,6 +5,10 @@
 import UIKit
 
 class TransparentViewController: BaseViewController {
+    static func instance() -> TransparentViewController? {
+        return TransparentViewController()
+    }
+
     private let sizeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

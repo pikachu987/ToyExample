@@ -5,6 +5,10 @@
 import UIKit
 
 class ShadowViewController: BaseViewController {
+    static func instance() -> ShadowViewController? {
+        return ShadowViewController()
+    }
+
     private var shadowView: ShadowView = {
         let view = ShadowView()
         view.translatesAutoresizingMaskIntoConstraints = false

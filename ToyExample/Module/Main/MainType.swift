@@ -8,19 +8,19 @@
 import Foundation
 
 enum MainType {
-    case scalePlayer
+    case minimizableVideoPlayer
     case transparent
     case shadow
 
     static var array: [MainType] {
-        return [.scalePlayer, .transparent, .shadow]
+        return [.minimizableVideoPlayer, .transparent, .shadow]
     }
     
-    static var initWithPresent: MainType? = .transparent
+    static var initWithPresent: MainType? = .minimizableVideoPlayer
 
     var title: String? {
         switch self {
-        case .scalePlayer: return "확대 축소 플레이어"
+        case .minimizableVideoPlayer: return "최소화 비디오 플레이어"
         case .transparent: return "투명뷰"
         case .shadow: return "그림자"
         }
@@ -28,14 +28,14 @@ enum MainType {
     
     func showViewController(_ viewContorller: MainViewController?) {
         switch self {
-        case .scalePlayer:
-            let showViewController = ScalePlayerListViewController(nibName: nil, bundle: nil)
+        case .minimizableVideoPlayer:
+            guard let showViewController = MinimizableVideoPlayerListViewController.instance() else { return }
             viewContorller?.navigationController?.pushViewController(showViewController, animated: true)
         case .transparent:
-            let showViewController = TransparentViewController(nibName: nil, bundle: nil)
+            guard let showViewController = TransparentViewController.instance() else { return }
             viewContorller?.navigationController?.pushViewController(showViewController, animated: true)
         case .shadow:
-            let showViewController = ShadowViewController(nibName: nil, bundle: nil)
+            guard let showViewController = ShadowViewController.instance() else { return }
             viewContorller?.navigationController?.pushViewController(showViewController, animated: true)
         }
     }

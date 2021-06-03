@@ -47,12 +47,15 @@
 		168ED4CC266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */; };
 		168ED4CD266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */; };
 		168ED4CE266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */; };
-		168ED4D126688C2800E07163 /* ScalePlayerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D026688C2800E07163 /* ScalePlayerListViewController.swift */; };
-		168ED4D226688C2800E07163 /* ScalePlayerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D026688C2800E07163 /* ScalePlayerListViewController.swift */; };
-		168ED4D326688C2800E07163 /* ScalePlayerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D026688C2800E07163 /* ScalePlayerListViewController.swift */; };
-		168ED4D526688C9200E07163 /* ScalePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* ScalePlayerViewController.swift */; };
-		168ED4D626688C9200E07163 /* ScalePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* ScalePlayerViewController.swift */; };
-		168ED4D726688C9200E07163 /* ScalePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* ScalePlayerViewController.swift */; };
+		168ED4D126688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D026688C2800E07163 /* MinimizableVideoPlayerListViewController.swift */; };
+		168ED4D226688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D026688C2800E07163 /* MinimizableVideoPlayerListViewController.swift */; };
+		168ED4D326688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D026688C2800E07163 /* MinimizableVideoPlayerListViewController.swift */; };
+		168ED4D526688C9200E07163 /* MinimizableVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* MinimizableVideoPlayerViewController.swift */; };
+		168ED4D626688C9200E07163 /* MinimizableVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* MinimizableVideoPlayerViewController.swift */; };
+		168ED4D726688C9200E07163 /* MinimizableVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* MinimizableVideoPlayerViewController.swift */; };
+		E0CD428D2668F1350010F668 /* MinimizableVideo.json in Resources */ = {isa = PBXBuildFile; fileRef = E0CD428C2668F1350010F668 /* MinimizableVideo.json */; };
+		E0CD428F2668F2720010F668 /* MinimizableVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD428E2668F2720010F668 /* MinimizableVideo.swift */; };
+		E0CD42912668F99B0010F668 /* MinimizableVideoPlayerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD42902668F99B0010F668 /* MinimizableVideoPlayerListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +100,11 @@
 		168ED4C3266874D400E07163 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		168ED4C7266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
 		168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
-		168ED4D026688C2800E07163 /* ScalePlayerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePlayerListViewController.swift; sourceTree = "<group>"; };
-		168ED4D426688C9200E07163 /* ScalePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalePlayerViewController.swift; sourceTree = "<group>"; };
+		168ED4D026688C2800E07163 /* MinimizableVideoPlayerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerListViewController.swift; sourceTree = "<group>"; };
+		168ED4D426688C9200E07163 /* MinimizableVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		E0CD428C2668F1350010F668 /* MinimizableVideo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MinimizableVideo.json; sourceTree = "<group>"; };
+		E0CD428E2668F2720010F668 /* MinimizableVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideo.swift; sourceTree = "<group>"; };
+		E0CD42902668F99B0010F668 /* MinimizableVideoPlayerListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +189,7 @@
 				168ED4A02668620A00E07163 /* Main */,
 				168ED49326685DB400E07163 /* Shadow */,
 				168ED4B926686BA100E07163 /* Transparent */,
-				168ED4CF26688C0300E07163 /* ScalePlayer */,
+				168ED4CF26688C0300E07163 /* MinimizableVideoPlayer */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -261,13 +267,16 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		168ED4CF26688C0300E07163 /* ScalePlayer */ = {
+		168ED4CF26688C0300E07163 /* MinimizableVideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				168ED4D026688C2800E07163 /* ScalePlayerListViewController.swift */,
-				168ED4D426688C9200E07163 /* ScalePlayerViewController.swift */,
+				168ED4D026688C2800E07163 /* MinimizableVideoPlayerListViewController.swift */,
+				E0CD42902668F99B0010F668 /* MinimizableVideoPlayerListCell.swift */,
+				168ED4D426688C9200E07163 /* MinimizableVideoPlayerViewController.swift */,
+				E0CD428E2668F2720010F668 /* MinimizableVideo.swift */,
+				E0CD428C2668F1350010F668 /* MinimizableVideo.json */,
 			);
-			path = ScalePlayer;
+			path = MinimizableVideoPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				168ED46F26685CAA00E07163 /* LaunchScreen.storyboard in Resources */,
+				E0CD428D2668F1350010F668 /* MinimizableVideo.json in Resources */,
 				168ED46C26685CAA00E07163 /* Assets.xcassets in Resources */,
 				168ED46726685CA900E07163 /* Main.storyboard in Resources */,
 			);
@@ -400,21 +410,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				168ED4D126688C2800E07163 /* ScalePlayerListViewController.swift in Sources */,
+				168ED4D126688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */,
 				168ED46426685CA900E07163 /* ShadowViewController.swift in Sources */,
 				168ED46026685CA900E07163 /* AppDelegate.swift in Sources */,
-				168ED4D526688C9200E07163 /* ScalePlayerViewController.swift in Sources */,
+				168ED4D526688C9200E07163 /* MinimizableVideoPlayerViewController.swift in Sources */,
 				168ED4C4266874D400E07163 /* BaseViewController.swift in Sources */,
 				168ED4BB26686BD000E07163 /* TransparentViewController.swift in Sources */,
 				168ED4A22668621900E07163 /* MainType.swift in Sources */,
 				168ED46A26685CA900E07163 /* ToyExample.xcdatamodeld in Sources */,
 				168ED4BF26686BDB00E07163 /* TransparentView.swift in Sources */,
+				E0CD428F2668F2720010F668 /* MinimizableVideo.swift in Sources */,
 				168ED4AC2668640100E07163 /* Array+Safe.swift in Sources */,
 				168ED4C8266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
 				168ED49726685E0300E07163 /* MainViewController.swift in Sources */,
 				168ED49D2668611500E07163 /* ShadowView.swift in Sources */,
 				168ED4CC266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */,
 				168ED4A8266863D900E07163 /* UIColor+.swift in Sources */,
+				E0CD42912668F99B0010F668 /* MinimizableVideoPlayerListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				168ED4D626688C9200E07163 /* ScalePlayerViewController.swift in Sources */,
+				168ED4D626688C9200E07163 /* MinimizableVideoPlayerViewController.swift in Sources */,
 				168ED49E2668611500E07163 /* ShadowView.swift in Sources */,
 				168ED49A26685E3800E07163 /* ShadowViewController.swift in Sources */,
 				168ED4A32668621900E07163 /* MainType.swift in Sources */,
@@ -431,7 +443,7 @@
 				168ED4C5266874D400E07163 /* BaseViewController.swift in Sources */,
 				168ED47A26685CAA00E07163 /* ToyExampleTests.swift in Sources */,
 				168ED4C9266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
-				168ED4D226688C2800E07163 /* ScalePlayerListViewController.swift in Sources */,
+				168ED4D226688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */,
 				168ED49826685E0300E07163 /* MainViewController.swift in Sources */,
 				168ED4C026686BDB00E07163 /* TransparentView.swift in Sources */,
 				168ED4A9266863D900E07163 /* UIColor+.swift in Sources */,
@@ -443,7 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				168ED4D726688C9200E07163 /* ScalePlayerViewController.swift in Sources */,
+				168ED4D726688C9200E07163 /* MinimizableVideoPlayerViewController.swift in Sources */,
 				168ED49F2668611500E07163 /* ShadowView.swift in Sources */,
 				168ED49B26685E3900E07163 /* ShadowViewController.swift in Sources */,
 				168ED4A42668621900E07163 /* MainType.swift in Sources */,
@@ -452,7 +464,7 @@
 				168ED4C6266874D400E07163 /* BaseViewController.swift in Sources */,
 				168ED48526685CAA00E07163 /* ToyExampleUITests.swift in Sources */,
 				168ED4CA266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
-				168ED4D326688C2800E07163 /* ScalePlayerListViewController.swift in Sources */,
+				168ED4D326688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */,
 				168ED49926685E0300E07163 /* MainViewController.swift in Sources */,
 				168ED4C126686BDB00E07163 /* TransparentView.swift in Sources */,
 				168ED4AA266863D900E07163 /* UIColor+.swift in Sources */,
