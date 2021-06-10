@@ -55,10 +55,9 @@ class MinimizableVideoPlayerListViewController: BaseViewController {
 // MARK: UITableViewDelegate
 extension MinimizableVideoPlayerListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard let item = items[safe: indexPath.row] else { return }
-        guard let viewController = MinimizableVideoPlayerViewController.instance(item) else { return }
-        viewController.modalPresentationStyle = .overCurrentContext
-        self.present(viewController, animated: true, completion: nil)
+        (navigationController?.tabBarController as? MinimizableVideoPlayerListTabbarController)?.showPlayerVideo(item)
     }
 }
 
@@ -70,7 +69,30 @@ extension MinimizableVideoPlayerListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MinimizableVideoPlayerListCell.identifier, for: indexPath) as? MinimizableVideoPlayerListCell else { fatalError() }
+        cell.delegate = self
         cell.item = items[safe: indexPath.row]
         return cell
+    }
+}
+
+// MARK: MinimizableVideoPlayerListCellDelegate
+extension MinimizableVideoPlayerListViewController: MinimizableVideoPlayerListCellDelegate {
+    func minimizableVideoPlayerListCellThumbImage(_ thumb: String?, closure: (((thumb: String?, image: UIImage?)) -> Void)?) {
+        if let thumb = thumb, let thumbURL = URL(string: thumb) {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: thumbURL) {
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        closure?((thumb: thumb, image: image))
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        closure?((thumb: thumb, image: nil))
+                    }
+                }
+            }
+        } else {
+            closure?((thumb: thumb, image: nil))
+        }
     }
 }

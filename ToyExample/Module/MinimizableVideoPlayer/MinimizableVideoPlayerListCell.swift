@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MinimizableVideoPlayerListCellDelegate: AnyObject {
+    func minimizableVideoPlayerListCellThumbImage(_ thumb: String?, closure: (((thumb: String?, image: UIImage?)) -> Void)?)
+}
+
 class MinimizableVideoPlayerListCell: UITableViewCell {
+    weak var delegate: MinimizableVideoPlayerListCellDelegate?
+
     static let identifier = "MinimizableVideoPlayerListCell"
     
     private let thumbnailImageView: UIImageView = {
@@ -39,7 +45,12 @@ class MinimizableVideoPlayerListCell: UITableViewCell {
     
     var item: MinimizableVideo? {
         didSet {
-            thumbnailImageView.backgroundColor = .blue
+            delegate?.minimizableVideoPlayerListCellThumbImage(item?.thumb, closure: { [weak self] (thumb: String?, image: UIImage?) in
+                if thumb == self?.item?.thumb {
+                    self?.thumbnailImageView.image = image
+                    self?.thumbnailImageView.backgroundColor = image == nil ? .gray : .white
+                }
+            })
             titleLabel.text = item?.title
             subtitleLabel.text = item?.subtitle
         }
@@ -76,5 +87,13 @@ class MinimizableVideoPlayerListCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        thumbnailImageView.image = nil
+        titleLabel.text = nil
+        subtitleLabel.text = nil
     }
 }

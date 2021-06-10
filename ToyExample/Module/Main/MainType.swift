@@ -16,7 +16,7 @@ enum MainType {
         return [.minimizableVideoPlayer, .transparent, .shadow]
     }
     
-    static var initWithPresent: MainType? = .minimizableVideoPlayer
+    static var initWithPresent: MainType? = nil
 
     var title: String? {
         switch self {
@@ -29,8 +29,9 @@ enum MainType {
     func showViewController(_ viewContorller: MainViewController?) {
         switch self {
         case .minimizableVideoPlayer:
-            guard let showViewController = MinimizableVideoPlayerListViewController.instance() else { return }
-            viewContorller?.navigationController?.pushViewController(showViewController, animated: true)
+            let showViewController = MinimizableVideoPlayerListTabbarController()
+            showViewController.modalPresentationStyle = .fullScreen
+            viewContorller?.present(showViewController, animated: true, completion: nil)
         case .transparent:
             guard let showViewController = TransparentViewController.instance() else { return }
             viewContorller?.navigationController?.pushViewController(showViewController, animated: true)
