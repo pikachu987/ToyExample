@@ -53,6 +53,8 @@
 		168ED4D526688C9200E07163 /* MinimizableVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* MinimizableVideoPlayerView.swift */; };
 		168ED4D626688C9200E07163 /* MinimizableVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* MinimizableVideoPlayerView.swift */; };
 		168ED4D726688C9200E07163 /* MinimizableVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4D426688C9200E07163 /* MinimizableVideoPlayerView.swift */; };
+		16928B9226816A17007C3E3C /* BookPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16928B9126816A17007C3E3C /* BookPagesViewController.swift */; };
+		16928B9426816BC7007C3E3C /* BookPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16928B9326816BC7007C3E3C /* BookPageViewController.swift */; };
 		E051B1CB2671DEA90008219B /* MinimizableVideoPlayerListTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E051B1CA2671DEA90008219B /* MinimizableVideoPlayerListTabbarController.swift */; };
 		E0CD428D2668F1350010F668 /* MinimizableVideo.json in Resources */ = {isa = PBXBuildFile; fileRef = E0CD428C2668F1350010F668 /* MinimizableVideo.json */; };
 		E0CD428F2668F2720010F668 /* MinimizableVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CD428E2668F2720010F668 /* MinimizableVideo.swift */; };
@@ -103,6 +105,8 @@
 		168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
 		168ED4D026688C2800E07163 /* MinimizableVideoPlayerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerListViewController.swift; sourceTree = "<group>"; };
 		168ED4D426688C9200E07163 /* MinimizableVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerView.swift; sourceTree = "<group>"; };
+		16928B9126816A17007C3E3C /* BookPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPagesViewController.swift; sourceTree = "<group>"; };
+		16928B9326816BC7007C3E3C /* BookPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageViewController.swift; sourceTree = "<group>"; };
 		E051B1CA2671DEA90008219B /* MinimizableVideoPlayerListTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerListTabbarController.swift; sourceTree = "<group>"; };
 		E0CD428C2668F1350010F668 /* MinimizableVideo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MinimizableVideo.json; sourceTree = "<group>"; };
 		E0CD428E2668F2720010F668 /* MinimizableVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideo.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				168ED49326685DB400E07163 /* Shadow */,
 				168ED4B926686BA100E07163 /* Transparent */,
 				168ED4CF26688C0300E07163 /* MinimizableVideoPlayer */,
+				16928B9026816A03007C3E3C /* BookPage */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -280,6 +285,15 @@
 				E0CD428C2668F1350010F668 /* MinimizableVideo.json */,
 			);
 			path = MinimizableVideoPlayer;
+			sourceTree = "<group>";
+		};
+		16928B9026816A03007C3E3C /* BookPage */ = {
+			isa = PBXGroup;
+			children = (
+				16928B9126816A17007C3E3C /* BookPagesViewController.swift */,
+				16928B9326816BC7007C3E3C /* BookPageViewController.swift */,
+			);
+			path = BookPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +433,7 @@
 				168ED4D526688C9200E07163 /* MinimizableVideoPlayerView.swift in Sources */,
 				168ED4C4266874D400E07163 /* BaseViewController.swift in Sources */,
 				168ED4BB26686BD000E07163 /* TransparentViewController.swift in Sources */,
+				16928B9426816BC7007C3E3C /* BookPageViewController.swift in Sources */,
 				E051B1CB2671DEA90008219B /* MinimizableVideoPlayerListTabbarController.swift in Sources */,
 				168ED4A22668621900E07163 /* MainType.swift in Sources */,
 				168ED46A26685CA900E07163 /* ToyExample.xcdatamodeld in Sources */,
@@ -431,6 +446,7 @@
 				168ED4CC266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */,
 				168ED4A8266863D900E07163 /* UIColor+.swift in Sources */,
 				E0CD42912668F99B0010F668 /* MinimizableVideoPlayerListCell.swift in Sources */,
+				16928B9226816A17007C3E3C /* BookPagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
