@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UINavigationController {
+class BaseNavigationController: UINavigationController {
     open override func loadView() {
         super.loadView()
 
@@ -41,7 +41,7 @@ extension UINavigationController {
 }
 
 // MARK: UIGestureRecognizerDelegate
-extension UINavigationController: UIGestureRecognizerDelegate {
+extension BaseNavigationController: UIGestureRecognizerDelegate {
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

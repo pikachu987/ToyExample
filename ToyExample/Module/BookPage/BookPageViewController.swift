@@ -16,17 +16,17 @@ class BookPageViewController: UIViewController {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isEditable = false
+        textView.isSelectable = false
         textView.textColor = UIColor(light: .black, dark: .white)
         return textView
     }()
 
     let index: Int
-    private let content: String
+    let content: String
     
     private init(index: Int, content: String) {
         self.index = index
         self.content = content
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,6 +36,8 @@ class BookPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(light: .white, dark: .black)
         
         view.addSubview(textView)
         

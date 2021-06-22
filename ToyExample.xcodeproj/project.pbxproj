@@ -41,9 +41,9 @@
 		168ED4C4266874D400E07163 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C3266874D400E07163 /* BaseViewController.swift */; };
 		168ED4C5266874D400E07163 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C3266874D400E07163 /* BaseViewController.swift */; };
 		168ED4C6266874D400E07163 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C3266874D400E07163 /* BaseViewController.swift */; };
-		168ED4C8266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C7266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift */; };
-		168ED4C9266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C7266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift */; };
-		168ED4CA266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C7266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift */; };
+		168ED4C8266874EF00E07163 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C7266874EF00E07163 /* BaseNavigationController.swift */; };
+		168ED4C9266874EF00E07163 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C7266874EF00E07163 /* BaseNavigationController.swift */; };
+		168ED4CA266874EF00E07163 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4C7266874EF00E07163 /* BaseNavigationController.swift */; };
 		168ED4CC266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */; };
 		168ED4CD266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */; };
 		168ED4CE266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */; };
@@ -101,7 +101,7 @@
 		168ED4BA26686BD000E07163 /* TransparentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentViewController.swift; sourceTree = "<group>"; };
 		168ED4BE26686BDB00E07163 /* TransparentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentView.swift; sourceTree = "<group>"; };
 		168ED4C3266874D400E07163 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		168ED4C7266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
+		168ED4C7266874EF00E07163 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
 		168ED4D026688C2800E07163 /* MinimizableVideoPlayerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerListViewController.swift; sourceTree = "<group>"; };
 		168ED4D426688C9200E07163 /* MinimizableVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimizableVideoPlayerView.swift; sourceTree = "<group>"; };
@@ -249,7 +249,6 @@
 		168ED4A6266863CC00E07163 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				168ED4C7266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift */,
 				168ED4A7266863D900E07163 /* UIColor+.swift */,
 				168ED4AB2668640100E07163 /* Array+Safe.swift */,
 				168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */,
@@ -270,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				168ED4C3266874D400E07163 /* BaseViewController.swift */,
+				168ED4C7266874EF00E07163 /* BaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -440,7 +440,7 @@
 				168ED4BF26686BDB00E07163 /* TransparentView.swift in Sources */,
 				E0CD428F2668F2720010F668 /* MinimizableVideo.swift in Sources */,
 				168ED4AC2668640100E07163 /* Array+Safe.swift in Sources */,
-				168ED4C8266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
+				168ED4C8266874EF00E07163 /* BaseNavigationController.swift in Sources */,
 				168ED49726685E0300E07163 /* MainViewController.swift in Sources */,
 				168ED49D2668611500E07163 /* ShadowView.swift in Sources */,
 				168ED4CC266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */,
@@ -462,7 +462,7 @@
 				168ED4AD2668640100E07163 /* Array+Safe.swift in Sources */,
 				168ED4C5266874D400E07163 /* BaseViewController.swift in Sources */,
 				168ED47A26685CAA00E07163 /* ToyExampleTests.swift in Sources */,
-				168ED4C9266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
+				168ED4C9266874EF00E07163 /* BaseNavigationController.swift in Sources */,
 				168ED4D226688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */,
 				168ED49826685E0300E07163 /* MainViewController.swift in Sources */,
 				168ED4C026686BDB00E07163 /* TransparentView.swift in Sources */,
@@ -483,7 +483,7 @@
 				168ED4AE2668640100E07163 /* Array+Safe.swift in Sources */,
 				168ED4C6266874D400E07163 /* BaseViewController.swift in Sources */,
 				168ED48526685CAA00E07163 /* ToyExampleUITests.swift in Sources */,
-				168ED4CA266874EF00E07163 /* UINavigationController+UIGestureRecognizerDelegate.swift in Sources */,
+				168ED4CA266874EF00E07163 /* BaseNavigationController.swift in Sources */,
 				168ED4D326688C2800E07163 /* MinimizableVideoPlayerListViewController.swift in Sources */,
 				168ED49926685E0300E07163 /* MainViewController.swift in Sources */,
 				168ED4C126686BDB00E07163 /* TransparentView.swift in Sources */,

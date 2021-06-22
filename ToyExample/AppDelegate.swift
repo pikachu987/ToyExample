@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIViewController.deinitSwizzle
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+        window?.rootViewController = BaseNavigationController(rootViewController: MainViewController())
         window?.makeKeyAndVisible()
         
         return true

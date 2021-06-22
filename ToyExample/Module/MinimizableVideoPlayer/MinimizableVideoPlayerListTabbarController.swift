@@ -12,12 +12,12 @@ class MinimizableVideoPlayerListTabbarController: UITabBarController {
     override func viewDidLoad() {
         var viewControllers = [UIViewController]()
         if let viewController = MinimizableVideoPlayerListViewController.instance() {
-            let navigationController = UINavigationController(rootViewController: viewController)
+            let navigationController = BaseNavigationController(rootViewController: viewController)
             navigationController.tabBarItem.title = "Home"
             viewControllers.append(navigationController)
         }
         
-        let navigationController = UINavigationController(rootViewController: UIViewController())
+        let navigationController = BaseNavigationController(rootViewController: UIViewController())
         navigationController.tabBarItem.title = "Second"
         viewControllers.append(navigationController)
         
