@@ -18,8 +18,19 @@ class BookPagesViewController: UIViewController {
         return navigationView
     }()
     
-    private var pageViewController: UIPageViewController = {
+    private var bottomView: BookPageBottomView = {
+        let bottomView = BookPageBottomView()
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+        return bottomView
+    }()
+    
+    private var horizontalPageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
+        return pageViewController
+    }()
+    
+    private var verticalPageViewController: UIPageViewController = {
+        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .vertical, options: nil)
         return pageViewController
     }()
     
@@ -47,15 +58,27 @@ class BookPagesViewController: UIViewController {
 
         contents = pageStrings
         
-        addChild(pageViewController)
-        view.addSubview(pageViewController.view)
+        addChild(horizontalPageViewController)
+        addChild(verticalPageViewController)
+
+        view.addSubview(horizontalPageViewController.view)
+        view.addSubview(verticalPageViewController.view)
+
         view.addSubview(navigationView)
+        view.addSubview(bottomView)
 
         NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: pageViewController.view.leadingAnchor),
-            view.topAnchor.constraint(equalTo: pageViewController.view.topAnchor),
-            view.bottomAnchor.constraint(equalTo: pageViewController.view.bottomAnchor),
-            view.trailingAnchor.constraint(equalTo: pageViewController.view.trailingAnchor)
+            view.leadingAnchor.constraint(equalTo: horizontalPageViewController.view.leadingAnchor),
+            view.topAnchor.constraint(equalTo: horizontalPageViewController.view.topAnchor),
+            view.bottomAnchor.constraint(equalTo: horizontalPageViewController.view.bottomAnchor),
+            view.trailingAnchor.constraint(equalTo: horizontalPageViewController.view.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: verticalPageViewController.view.leadingAnchor),
+            view.topAnchor.constraint(equalTo: verticalPageViewController.view.topAnchor),
+            view.bottomAnchor.constraint(equalTo: verticalPageViewController.view.bottomAnchor),
+            view.trailingAnchor.constraint(equalTo: verticalPageViewController.view.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -63,22 +86,45 @@ class BookPagesViewController: UIViewController {
             view.trailingAnchor.constraint(equalTo: navigationView.trailingAnchor),
             view.topAnchor.constraint(equalTo: navigationView.topAnchor).identifier("top")
         ])
-
-        pageViewController.delegate = self
-        pageViewController.dataSource = self
         
-        if let content = contents.first, let viewController = BookPageViewController.instance(0, content: content) {
-            pageViewController.setViewControllers([viewController], direction: .forward, animated: true, completion: nil)
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor).identifier("bottom")
+        ])
+
+        horizontalPageViewController.delegate = self
+        horizontalPageViewController.dataSource = self
+
+        verticalPageViewController.delegate = self
+        verticalPageViewController.dataSource = self
+        
+        bottomView.delegate = self
+        
+        if let content = contents.first {
+            if let viewController = BookPageViewController.instance(0, content: content) {
+                verticalPageViewController.setViewControllers([viewController], direction: .forward, animated: true, completion: nil)
+            }
+            if let viewController = BookPageViewController.instance(0, content: content) {
+                horizontalPageViewController.setViewControllers([viewController], direction: .forward, animated: true, completion: nil)
+            }
         }
         
         navigationView.navigationItem.title = "1 page"
+        bottomView.pageStyle = "👇"
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTap(_:))))
         
+        verticalPageViewController.view.isHidden = true
+        
         navigationView.isHidden = true
+        bottomView.isHidden = true
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.navigationView.isHidden = false
+            self.bottomView.isHidden = false
             self.view.constraints.filter({ $0.identifier == "top" }).first?.constant = self.navigationView.height
+            self.view.constraints.filter({ $0.identifier == "bottom" }).first?.constant = -self.bottomView.height
         }
     }
     
@@ -113,10 +159,32 @@ class BookPagesViewController: UIViewController {
     
     private func showMenu() {
         view.constraints.filter({ $0.identifier == "top" }).first?.constant = 0
+        view.constraints.filter({ $0.identifier == "bottom" }).first?.constant = 0
     }
     
     private func hideMenu() {
         view.constraints.filter({ $0.identifier == "top" }).first?.constant = navigationView.height
+        view.constraints.filter({ $0.identifier == "bottom" }).first?.constant = -bottomView.height
+    }
+    
+    private func makePageViewController(_ index: Int) -> UIViewController? {
+        guard let content = contents[safe: index] else { return nil }
+        return BookPageViewController.instance(index, content: content)
+    }
+}
+
+// MARK: BookPageBottomViewDelegate
+extension BookPagesViewController: BookPageBottomViewDelegate {
+    func bookPageBottomViewPageStyle(_ view: BookPageBottomView) {
+        if verticalPageViewController.view.isHidden {
+            verticalPageViewController.view.isHidden = false
+            horizontalPageViewController.view.isHidden = true
+            bottomView.pageStyle = "👉"
+        } else {
+            verticalPageViewController.view.isHidden = true
+            horizontalPageViewController.view.isHidden = false
+            bottomView.pageStyle = "👇"
+        }
     }
 }
 
@@ -131,6 +199,17 @@ extension BookPagesViewController: UIPageViewControllerDelegate {
         if !completed { return }
         guard let viewController = pageViewController.viewControllers?.first as? BookPageViewController else { return }
         navigationView.navigationItem.title = "\(viewController.index + 1) page"
+        
+        guard let contentPageViewController = makePageViewController(viewController.index) else { return }
+        if pageViewController === horizontalPageViewController {
+            verticalPageViewController.delegate = nil
+            verticalPageViewController.setViewControllers([contentPageViewController], direction: .forward, animated: false)
+            verticalPageViewController.delegate = self
+        } else if pageViewController === verticalPageViewController {
+            horizontalPageViewController.delegate = nil
+            horizontalPageViewController.setViewControllers([contentPageViewController], direction: .forward, animated: false)
+            horizontalPageViewController.delegate = self
+        }
     }
 }
 
@@ -142,15 +221,11 @@ extension BookPagesViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewController = viewController as? BookPageViewController else { return nil }
-        let index = viewController.index - 1
-        guard let content = contents[safe: index] else { return nil }
-        return BookPageViewController.instance(index, content: content)
+        return makePageViewController(viewController.index - 1)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewController = viewController as? BookPageViewController else { return nil }
-        let index = viewController.index + 1
-        guard let content = contents[safe: index] else { return nil }
-        return BookPageViewController.instance(index, content: content)
+        return makePageViewController(viewController.index + 1)
     }
 }

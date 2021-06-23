@@ -19,6 +19,7 @@ class BookPageNavigationView: UIView {
         let navigationBar = UINavigationBar(frame: .zero)
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         navigationBar.pushItem(UINavigationItem(), animated: false)
+        navigationBar.isTranslucent = false
         navigationBar.barTintColor = UIColor(light: 240/255, dark: 34/255)
         return navigationBar
     }()
