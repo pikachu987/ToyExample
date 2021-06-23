@@ -44,11 +44,21 @@ class MinimizableVideoPlayerListViewController: BaseViewController {
         fetchData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "👇", style: .done, target: self, action: #selector(backTap(_:)))
+    }
+    
     private func fetchData() {
         guard let url = Bundle.main.url(forResource: "MinimizableVideo", withExtension: "json") else { return }
         guard let data = try? Data(contentsOf: url) else { return }
         guard let items = try? JSONDecoder().decode([MinimizableVideo].self, from: data) else { return }
         self.items = items
+    }
+    
+    @objc private func backTap(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1679EA112682B76C002C5C8F /* BookPageNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1679EA102682B76C002C5C8F /* BookPageNavigationView.swift */; };
+		1679EA132682BC56002C5C8F /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1679EA122682BC56002C5C8F /* UIView+.swift */; };
+		1679EA152682BEA5002C5C8F /* BookPageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1679EA142682BEA5002C5C8F /* BookPageBottomView.swift */; };
 		168ED46026685CA900E07163 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED45F26685CA900E07163 /* AppDelegate.swift */; };
 		168ED46426685CA900E07163 /* ShadowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168ED46326685CA900E07163 /* ShadowViewController.swift */; };
 		168ED46726685CA900E07163 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168ED46526685CA900E07163 /* Main.storyboard */; };
@@ -79,6 +82,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1679EA102682B76C002C5C8F /* BookPageNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageNavigationView.swift; sourceTree = "<group>"; };
+		1679EA122682BC56002C5C8F /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		1679EA142682BEA5002C5C8F /* BookPageBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageBottomView.swift; sourceTree = "<group>"; };
 		168ED45C26685CA900E07163 /* ToyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		168ED45F26685CA900E07163 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		168ED46326685CA900E07163 /* ShadowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +258,7 @@
 				168ED4A7266863D900E07163 /* UIColor+.swift */,
 				168ED4AB2668640100E07163 /* Array+Safe.swift */,
 				168ED4CB266879FE00E07163 /* NSLayoutConstraint+.swift */,
+				1679EA122682BC56002C5C8F /* UIView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -292,6 +299,8 @@
 			children = (
 				16928B9126816A17007C3E3C /* BookPagesViewController.swift */,
 				16928B9326816BC7007C3E3C /* BookPageViewController.swift */,
+				1679EA102682B76C002C5C8F /* BookPageNavigationView.swift */,
+				1679EA142682BEA5002C5C8F /* BookPageBottomView.swift */,
 			);
 			path = BookPage;
 			sourceTree = "<group>";
@@ -435,6 +444,7 @@
 				168ED4BB26686BD000E07163 /* TransparentViewController.swift in Sources */,
 				16928B9426816BC7007C3E3C /* BookPageViewController.swift in Sources */,
 				E051B1CB2671DEA90008219B /* MinimizableVideoPlayerListTabbarController.swift in Sources */,
+				1679EA132682BC56002C5C8F /* UIView+.swift in Sources */,
 				168ED4A22668621900E07163 /* MainType.swift in Sources */,
 				168ED46A26685CA900E07163 /* ToyExample.xcdatamodeld in Sources */,
 				168ED4BF26686BDB00E07163 /* TransparentView.swift in Sources */,
@@ -443,7 +453,9 @@
 				168ED4C8266874EF00E07163 /* BaseNavigationController.swift in Sources */,
 				168ED49726685E0300E07163 /* MainViewController.swift in Sources */,
 				168ED49D2668611500E07163 /* ShadowView.swift in Sources */,
+				1679EA112682B76C002C5C8F /* BookPageNavigationView.swift in Sources */,
 				168ED4CC266879FE00E07163 /* NSLayoutConstraint+.swift in Sources */,
+				1679EA152682BEA5002C5C8F /* BookPageBottomView.swift in Sources */,
 				168ED4A8266863D900E07163 /* UIColor+.swift in Sources */,
 				E0CD42912668F99B0010F668 /* MinimizableVideoPlayerListCell.swift in Sources */,
 				16928B9226816A17007C3E3C /* BookPagesViewController.swift in Sources */,

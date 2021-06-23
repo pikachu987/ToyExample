@@ -12,11 +12,10 @@ class BookPagesViewController: UIViewController {
         return BookPagesViewController()
     }
     
-    private var navigationBar: UINavigationBar = {
-        let navigationBar = UINavigationBar(frame: .zero)
-        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        navigationBar.pushItem(UINavigationItem(), animated: false)
-        return navigationBar
+    private var navigationView: BookPageNavigationView = {
+        let navigationView = BookPageNavigationView()
+        navigationView.translatesAutoresizingMaskIntoConstraints = false
+        return navigationView
     }()
     
     private var pageViewController: UIPageViewController = {
@@ -25,6 +24,10 @@ class BookPagesViewController: UIViewController {
     }()
     
     private var contents = [String]()
+    
+    private var isShowMenu: Bool {
+        return view.constraints.filter({ $0.identifier == "top" }).first?.constant == 0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +49,7 @@ class BookPagesViewController: UIViewController {
         
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
-        view.addSubview(navigationBar)
+        view.addSubview(navigationView)
 
         NSLayoutConstraint.activate([
             view.leadingAnchor.constraint(equalTo: pageViewController.view.leadingAnchor),
@@ -56,9 +59,9 @@ class BookPagesViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
-            view.topAnchor.constraint(equalTo: navigationBar.topAnchor, constant: navigationBar.bounds.height).identifier("top")
+            view.leadingAnchor.constraint(equalTo: navigationView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: navigationView.trailingAnchor),
+            view.topAnchor.constraint(equalTo: navigationView.topAnchor).identifier("top")
         ])
 
         pageViewController.delegate = self
@@ -68,7 +71,15 @@ class BookPagesViewController: UIViewController {
             pageViewController.setViewControllers([viewController], direction: .forward, animated: true, completion: nil)
         }
         
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigationBarTap(_:))))
+        navigationView.navigationItem.title = "1 page"
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTap(_:))))
+        
+        navigationView.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.navigationView.isHidden = false
+            self.view.constraints.filter({ $0.identifier == "top" }).first?.constant = self.navigationView.height
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +87,8 @@ class BookPagesViewController: UIViewController {
         
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        navigationView.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "👈", style: .done, target: self, action: #selector(backTap(_:)))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -85,21 +98,40 @@ class BookPagesViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    @objc private func navigationBarTap(_ sender: UITapGestureRecognizer) {
-        if view.constraints.filter({ $0.identifier == "top" }).first?.constant == -UIApplication.shared.statusBarFrame.height {
-            view.constraints.filter({ $0.identifier == "top" }).first?.constant = navigationBar.bounds.height
+    @objc private func viewTap(_ sender: UITapGestureRecognizer) {
+        if isShowMenu {
+            hideMenu()
         } else {
-            view.constraints.filter({ $0.identifier == "top" }).first?.constant = -UIApplication.shared.statusBarFrame.height
+            showMenu()
         }
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
+        view.animationLayout(withDuration: 0.3)
+    }
+    
+    @objc private func backTap(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func showMenu() {
+        view.constraints.filter({ $0.identifier == "top" }).first?.constant = 0
+    }
+    
+    private func hideMenu() {
+        view.constraints.filter({ $0.identifier == "top" }).first?.constant = navigationView.height
     }
 }
 
 // MARK: UIPageViewControllerDelegate
 extension BookPagesViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        hideMenu()
+        view.animationLayout(withDuration: 0.3)
+    }
     
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if !completed { return }
+        guard let viewController = pageViewController.viewControllers?.first as? BookPageViewController else { return }
+        navigationView.navigationItem.title = "\(viewController.index + 1) page"
+    }
 }
 
 // MARK: UIPageViewControllerDataSource
